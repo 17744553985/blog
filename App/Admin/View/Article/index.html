@@ -1,0 +1,119 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="{PUBLIC_PATH}Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="{PUBLIC_PATH}Admin/css/main.css"/>
+    <script type="text/javascript" src="{PUBLIC_PATH}Admin/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="{PUBLIC_PATH}Admin/js/jquery-1.4.2.js"></script>
+    {literal}
+    <script >
+        $(function(){
+            $("#nowtime").css({color:'red'});
+            window.setInterval('ShowTime()',1000);
+        });
+        function ShowTime(){
+            var t = new Date();
+            var str = t.getFullYear() + '年';
+            str += t.getMonth() + '月';
+            str += t.getDate() + '日 ';
+            str += t.getHours() + ':';
+            str += t.getMinutes() + ':';
+            str += t.getSeconds() + '';
+            $("#nowtime").html(str);
+        }
+    </script>
+    {/literal}
+</head>
+<body>
+
+
+<div class="topbar-wrap white">
+    {include file='../Public/top.html'}
+</div>
+<div class="container clearfix">
+    
+    <!--左侧菜单栏-->
+    
+    <!--左侧菜单栏 begin-->
+    {include file='../Public/left.html'}
+    <!--左侧菜单栏 begin-->
+    
+    <!--右侧主操作区-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i>
+                <a href="?p=back">首页</a>
+                <span class="crumb-step">&gt;</span>
+                <span class="crumb-name">分类管理</span>
+            </div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="" method="post">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">关键字:</th>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="?p=Admin&c=Article&a=add"><i class="icon-font"></i>添加文章</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <form name="myform" id="myform" method="post">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%">
+                                <input class="allChoose" name="" type="checkbox">
+                            </th>
+                            <th>标题</th>
+                            <th>所属分类</th>
+                            <th>作者</th>
+                            <th>发布时间</th>
+                            <th>点击数</th>
+                            <th>操作</th>
+                        </tr>
+                        {foreach $data['list'] as $val}
+                        <tr>
+                            <td class="tc">
+                                <input name="id[]" value="{$val.id}" type="checkbox">
+                            </td>
+                            <td>{$val.title}</td>
+                            <td>{$val.name}</td>
+                            <td>{$val.author}</td>
+                            <td>{$val.ptime}</td>
+                            <td>{$val.hits}</td>
+                            <td>
+                                <a class="link-update" href="?p=back&c=Blog&a=Edit&id=3">修改</a>
+                                <a class="link-del" href="?p=back&c=Blog&a=Delete&id=3">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                </form>
+                    <div class="list-page">
+                        {$data['showPage']}
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+    <!--/右侧主操作区-->
+</div>
+
+</body>
+</html>

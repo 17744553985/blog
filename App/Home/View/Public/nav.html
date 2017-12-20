@@ -1,0 +1,49 @@
+<style>
+    #login{
+        float:right;
+    }
+    #login span{
+        color: #fff;
+        display: inline-block;
+        font-family: "Microsoft Yahei",Arial,Helvetica,sans-serif;
+        padding: 0 20px;
+        transition: all 1s ease 0s;
+        height:30px;
+        margin-top:20px;
+        line-height:30px;
+        font-size:14px;
+        background-color: #df8505;
+        cursor: pointer;
+    }
+</style>
+
+<nav id="topnav">
+    <a href="index.php">首页</a>
+    <a href="about.html">关于我</a>
+    <a href="?c=Art&a=newslist&id=2">慢生活</a>
+    <a href="?c=Art&a=newslist&id=3">学习笔记</a>
+    <a href="new.html">相册</a>
+    <div id="login">
+        {if isset($smarty.session.userinfo)}
+            <span id="yhm">{$smarty.session.userinfo.username}</span>
+            <span id="tc" onclick="location.href='index.php?c=Login&a=logout'">退出</span>
+        {else}
+            <span id="ll">注册</span>
+            <span id="rr">登录</span>
+        {/if}
+
+    </div>
+</nav>
+<script>
+    var ll = document.getElementById('ll');
+    ll.onclick=function(){
+        location.href='index.php?c=Login&a=register';
+    }
+
+    var rr = document.getElementById('rr');
+    rr.onclick=function(){
+        location.href='index.php?c=Login&a=login';
+    }
+
+
+</script>

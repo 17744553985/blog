@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录</title>
+    <link rel="stylesheet" type="text/css" href="{PUBLIC_PATH}Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="{PUBLIC_PATH}Admin/css/main.css"/>
+    <script type="text/javascript" src="{PUBLIC_PATH}Admin/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="{PUBLIC_PATH}Admin/js/jquery-1.4.2.js"></script>
+    <style>
+        #cc{
+            width:670px;
+            margin:150px auto;
+        }
+        td{
+            padding:10px 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container clearfix">
+    <!--右侧主操作区-->
+    <div class="main-wrap" id="cc">
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="?p=Admin&c=Login&a=loginHandle" method="post" id="myform" >
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        <tr>
+                            <th>用户名：</th>
+                            <td>
+                                <input class="common-text required" id="title" name="user" size="50" value="" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>密码：</th>
+                            <td>
+                                <input class="common-text required" name="pwd" size="50" value="" type="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>验证码：</th>
+                            <td>
+                                <input class="common-text required" name="yzm" size="4" value="" type="text">
+                                <img src="?p=Admin&c=Public&a=verify" width="80" onclick="this.src='?p=Admin&c=Public&a=verify&t='+Math.random()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input class="btn btn-primary btn4 mr10" value="登录" type="submit">
+                                <input class="btn btn4" onclick="history.go(-1)" value="返回" type="button">
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <!--/右侧主操作区-->
+</div>
+
+</body>
+</html>
